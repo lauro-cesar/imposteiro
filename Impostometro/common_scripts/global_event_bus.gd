@@ -124,7 +124,7 @@ func set_version_number():
 	
 	add_child(http)
 	http.download_file = local_version_file_path
-	var url = "https://lauro-cesar.github.io/imposteiro/static/assets/version.json"
+	var url = "https://lauro-cesar.github.io/imposteiro/assets/version.json"
 	var err := http.request(url)
 	if err != OK:
 		print("Not ok")

@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1764475684|3101490';
+const CACHE_VERSION = '1764476680|3047806';
 /** @type {string} */
 const CACHE_PREFIX = 'IMPOSTEIRO-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
