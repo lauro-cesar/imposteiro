@@ -285,10 +285,10 @@ async function isBuildNumberDifferent(url) {
 	<script type='text/javascript' src='index.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":true,"fileSizes":{"index.pck":31843260,"index.wasm":38057390},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":true,"fileSizes":{"index.pck":40486484,"index.wasm":38057390},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
 
 		(async () => {
-		const isDifferent = await isBuildNumberDifferent("https://lauro-cesar.github.io/imposteiro/assets/version.json");
+		const isDifferent = await isBuildNumberDifferent("/imposteiro/assets/version.json");
 		if (isDifferent) {			
 			reset_cache_and_reload();
 		} else {

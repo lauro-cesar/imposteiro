@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dn3rw6lrj23t7"]
 
 [ext_resource type="Script" uid="uid://uaedaw4xi0ob" path="res://scenes/onboarding/onboarding.gd" id="1_bxndt"]
+[ext_resource type="Texture2D" uid="uid://caph5u6d8m87t" path="res://assets/logotipos/imposteiro_1.png" id="3_ahmiy"]
 [ext_resource type="Script" uid="uid://cge3qx0wdn4in" path="res://scenes/onboarding/main_loader.gd" id="4_bxndt"]
-[ext_resource type="Texture2D" uid="uid://h0wgn6ydqyl1" path="res://assets/logotipos/logotipo_english_key.png" id="4_fnivr"]
 
 [sub_resource type="Environment" id="Environment_10rrh"]
 
@@ -39,7 +39,7 @@ size_flags_vertical = 3
 [node name="TextureRect" type="TextureRect" parent="main_loader/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("4_fnivr")
+texture = ExtResource("3_ahmiy")
 stretch_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="main_loader/VBoxContainer"]

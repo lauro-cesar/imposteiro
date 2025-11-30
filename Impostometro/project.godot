@@ -14,7 +14,6 @@ config/name="IMPOSTEIRO"
 run/main_scene="uid://dn3rw6lrj23t7"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0.838897, 0.838897, 0.838897, 1)
-boot_splash/image="uid://cp6d8acqqhdof"
 config/icon="uid://cp6d8acqqhdof"
 
 [autoload]

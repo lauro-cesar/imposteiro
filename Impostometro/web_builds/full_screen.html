@@ -283,7 +283,7 @@ async function isBuildNumberDifferent(url) {
 		const GODOT_CONFIG = $GODOT_CONFIG;
 
 		(async () => {
-		const isDifferent = await isBuildNumberDifferent("https://lauro-cesar.github.io/imposteiro/assets/version.json");
+		const isDifferent = await isBuildNumberDifferent("/imposteiro/assets/version.json");
 		if (isDifferent) {			
 			reset_cache_and_reload();
 		} else {
