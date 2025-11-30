@@ -13,8 +13,6 @@ config_version=5
 config/name="IMPOSTEIRO"
 run/main_scene="uid://dn3rw6lrj23t7"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-boot_splash/bg_color=Color(0.838897, 0.838897, 0.838897, 1)
-config/icon="uid://cp6d8acqqhdof"
 
 [autoload]
 
@@ -24,6 +22,7 @@ GlobalEventBus="*res://common_scripts/global_event_bus.gd"
 
 window/size/viewport_width=1080
 window/size/viewport_height=1920
+window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/per_pixel_transparency/allowed=true
