@@ -17,6 +17,7 @@ mouse_filter = 1
 script = ExtResource("1_bxndt")
 
 [node name="main_loader" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
