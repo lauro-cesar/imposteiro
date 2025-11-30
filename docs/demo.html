@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tax on Your Plate – Game Identity</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Core palette */
+      --bg-main: #020617;        /* dark navy */
+      --bg-elevated: #020817;
+      --bg-card: #020b1b;
+      --accent-green: #22c55e;   /* tax number highlight */
+      --accent-orange: #f97316;  /* food highlight */
+      --accent-soft: #38bdf8;    /* secondary details */
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --danger: #f43f5e;
+
+      --radius-lg: 24px;
+      --radius-md: 14px;
+      --shadow-soft: 0 20px 45px rgba(15, 23, 42, 0.9);
+      --blur-bg: blur(18px);
+
+      --font-sans: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   sans-serif;
+      --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+                   "Liberation Mono", "Courier New", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background:
+        radial-gradient(circle at top left, #0f172a 0, transparent 55%),
+        radial-gradient(circle at bottom right, #1e293b 0, transparent 55%),
+        var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .app-shell {
+      width: 100%;
+      max-width: 1120px;
+      background: radial-gradient(circle at top, rgba(148, 163, 184, 0.08), transparent 55%),
+                  linear-gradient(135deg, rgba(15, 23, 42, 0.97), rgba(15, 23, 42, 0.96));
+      border-radius: 32px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      padding: 24px 28px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-shell::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(56, 189, 248, 0.45), transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(249, 115, 22, 0.35), transparent 60%);
+      mix-blend-mode: soft-light;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 2fr);
+      gap: 26px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 880px) {
+      .content-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 30% 0%, rgba(248, 250, 252, 0.8), transparent 55%),
+        linear-gradient(145deg, #22c55e, #15803d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 30px rgba(16, 185, 129, 0.85);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-logo::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 12px;
+      border: 1px solid rgba(22, 101, 52, 0.6);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo-icon {
+      position: relative;
+      width: 26px;
+      height: 26px;
+    }
+
+    .logo-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .brand-text-main {
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+    }
+
+    .brand-text-main span:first-child {
+      color: var(--accent-orange);
+    }
+
+    .brand-text-main span:last-child {
+      color: var(--accent-green);
+    }
+
+    .brand-tagline {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .badge-godot {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.7);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(10px);
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    /* Left column: Hero + Input */
+    .hero {
+      border-radius: var(--radius-lg);
+      padding: 22px 20px 18px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      backdrop-filter: var(--blur-bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      background:
+        conic-gradient(from 210deg, rgba(56, 189, 248, 0.2), transparent 20%,
+          rgba(249, 115, 22, 0.32), transparent 60%, rgba(34, 197, 94, 0.3), transparent 80%);
+      opacity: 0.32;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .pill-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #f97316, #22c55e);
+      box-shadow: 0 0 10px rgba(249, 115, 22, 0.8);
+    }
+
+    .hero-title {
+      font-size: 1.7rem;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .hero-title span.highlight {
+      color: var(--accent-orange);
+    }
+
+    .hero-title span.highlight-alt {
+      color: var(--accent-green);
+    }
+
+    .hero-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 33rem;
+      margin-bottom: 16px;
+    }
+
+    .hero-subtitle strong {
+      color: var(--accent-soft);
+      font-weight: 500;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 720px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .panel {
+      border-radius: var(--radius-md);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      padding: 14px 14px 12px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .panel-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .panel-tag {
+      font-size: 0.75rem;
+      color: var(--accent-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .panel-tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.6);
+    }
+
+    .input-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .input-row input[type="text"] {
+      flex: 1;
+      background: rgba(15, 23, 42, 0.98);
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 9px 12px;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .input-row input[type="text"]::placeholder {
+      color: rgba(148, 163, 184, 0.8);
+    }
+
+    .input-row input[type="text"]:focus {
+      border-color: var(--accent-orange);
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-main {
+      border-radius: 999px;
+      border: none;
+      padding: 9px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #f97316, #facc15);
+      color: #020617;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      box-shadow: 0 10px 25px rgba(249, 115, 22, 0.7);
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+        filter 0.12s ease-out;
+    }
+
+    .btn-main span.spark {
+      font-size: 1rem;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-1.5px);
+      filter: brightness(1.05);
+      box-shadow: 0 14px 30px rgba(249, 115, 22, 0.95);
+    }
+
+    .btn-main:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 18px rgba(249, 115, 22, 0.55);
+    }
+
+    .input-hint {
+      margin-top: 8px;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .input-pill {
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.7rem;
+      color: rgba(209, 213, 219, 0.85);
+    }
+
+    .life-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .life-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .life-row span:first-child {
+      color: var(--text-muted);
+    }
+
+    .life-row strong {
+      font-family: var(--font-mono);
+      letter-spacing: 0.04em;
+      color: var(--accent-soft);
+    }
+
+    .life-slider-wrapper {
+      margin-top: 6px;
+    }
+
+    .life-slider-wrapper label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .life-slider-wrapper input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent-green);
+    }
+
+    .hero-footer {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 720px) {
+      .hero-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .hero-footer span strong {
+      color: var(--accent-green);
+    }
+
+    .pill-compact {
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+    }
+
+    /* Right column: Result / HUD */
+    .hud {
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 16px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(12, 74, 110, 0.9));
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      backdrop-filter: var(--blur-bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hud-overlay-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(
+          rgba(15, 23, 42, 0.55) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(15, 23, 42, 0.55) 1px,
+          transparent 1px
+        );
+      background-size: 22px 22px;
+      opacity: 0.7;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .hud-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hud-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .hud-title {
+      font-size: 0.88rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(203, 213, 225, 0.85);
+    }
+
+    .hud-status {
+      font-size: 0.72rem;
+      color: var(--accent-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hud-leds {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .hud-led {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(34, 197, 94, 0.28);
+      border: 1px solid rgba(34, 197, 94, 0.65);
+      box-shadow: 0 0 6px rgba(34, 197, 94, 0.85);
+    }
+
+    .hud-led:nth-child(2) {
+      background: rgba(249, 115, 22, 0.28);
+      border-color: rgba(249, 115, 22, 0.7);
+      box-shadow: 0 0 6px rgba(249, 115, 22, 0.85);
+    }
+
+    .hud-led:nth-child(3) {
+      background: rgba(56, 189, 248, 0.28);
+      border-color: rgba(56, 189, 248, 0.7);
+      box-shadow: 0 0 6px rgba(56, 189, 248, 0.85);
+    }
+
+    .hud-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 720px) {
+      .hud-main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hud-highlight {
+      border-radius: var(--radius-md);
+      padding: 14px;
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.4), transparent 70%),
+                  rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hud-highlight-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .hud-number {
+      font-family: var(--font-mono);
+      font-size: 1.7rem;
+      letter-spacing: 0.08em;
+      color: var(--accent-green);
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .hud-number span.currency {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      color: rgba(190, 242, 100, 0.95);
+    }
+
+    .hud-number span.decimals {
+      font-size: 1rem;
+      opacity: 0.75;
+    }
+
+    .hud-highlight-caption {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .hud-highlight-caption strong {
+      color: var(--accent-orange);
+      font-weight: 500;
+    }
+
+    .hud-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .hud-chip {
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: rgba(209, 213, 219, 0.9);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .hud-chip small {
+      opacity: 0.7;
+    }
+
+    .hud-food-card {
+      border-radius: var(--radius-md);
+      padding: 12px 12px 11px;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      min-height: 94px;
+    }
+
+    .hud-food-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+    }
+
+    .hud-food-name {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hud-food-name span.icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      background: radial-gradient(circle at 30% 0%, #fed7aa, #f97316);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    .hud-food-tag {
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(234, 179, 8, 0.7);
+      color: rgba(250, 250, 250, 0.9);
+      background: rgba(23, 37, 84, 0.9);
+    }
+
+    .hud-food-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .hud-food-meta span strong {
+      color: rgba(248, 250, 252, 0.92);
+    }
+
+    .hud-footer {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      font-size: 0.74rem;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    @media (max-width: 720px) {
+      .hud-footer {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hud-footer a {
+      color: var(--accent-soft);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(56, 189, 248, 0.4);
+      padding-bottom: 1px;
+    }
+
+    .hud-progress {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hud-bar {
+      flex: 1;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hud-bar-fill {
+      position: absolute;
+      inset: -1px;
+      width: 65%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #22c55e, #facc15, #f97316);
+      box-shadow: 0 0 12px rgba(249, 115, 22, 0.9);
+    }
+
+    .hud-mini {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      opacity: 0.8;
+    }
+
+    /* Error / info message */
+    .error-msg {
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: var(--danger);
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-logo">
+          <div class="logo-icon">
+            <!-- Simple SVG combining a plate + bar chart -->
+            <svg viewBox="0 0 40 40" aria-hidden="true">
+              <defs>
+                <linearGradient id="plate" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#dcfce7"/>
+                  <stop offset="100%" stop-color="#bbf7d0"/>
+                </linearGradient>
+                <linearGradient id="bars" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#086e33"/>
+                  <stop offset="100%" stop-color="#16a34a"/>
+                </linearGradient>
+              </defs>
+              <circle cx="20" cy="20" r="11.5" fill="url(#plate)" opacity="0.96"/>
+              <circle cx="20" cy="20" r="9" fill="#052e16"/>
+              <rect x="13" y="17" width="3" height="7.5" rx="1" fill="url(#bars)" />
+              <rect x="18.5" y="14" width="3" height="10.5" rx="1" fill="url(#bars)" />
+              <rect x="24" y="19" width="3" height="5.5" rx="1" fill="url(#bars)" />
+              <path d="M6 14c0-2 1.6-3.6 3.6-3.6" stroke="#bbf7d0" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M34 14c0-2-1.6-3.6-3.6-3.6" stroke="#bbf7d0" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <div class="brand-text-main">
+            <span>Tax</span><span>on&nbsp;Your&nbsp;Plate</span>
+          </div>
+          <div class="brand-tagline">
+            Lifetime Food Tax Estimator – Godot Game Identity
+          </div>
+        </div>
+      </div>
+
+      <div class="badge-godot">
+        <span class="badge-dot"></span>
+        <span>Designed for Godot 4 UI</span>
+      </div>
+    </header>
+
+    <main class="content-grid">
+      <!-- LEFT: Hero + Input loop -->
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-kicker">
+            <span class="pill-dot"></span>
+            <span>Gameplay loop · Enter food → See lifetime taxes</span>
+          </div>
+
+          <h1 class="hero-title">
+            Turn <span class="highlight">every meal</span><br />
+            into a <span class="highlight-alt">tax reality check</span>.
+          </h1>
+
+          <p class="hero-subtitle">
+            Type a food you eat often and let the game estimate how much tax you
+            “eat” in your whole life. Built to spark <strong>financial awareness</strong> using a
+            quick, satisfying feedback loop.
+          </p>
+
+          <div class="hero-grid">
+            <!-- Input panel -->
+            <div class="panel">
+              <div class="panel-header">
+                <div class="panel-title">Food input</div>
+                <div class="panel-tag">
+                  <span class="panel-tag-dot"></span>
+                  Player action
+                </div>
+              </div>
+
+              <div class="input-label">What food do you want to analyze?</div>
+              <div class="input-row">
+                <input id="food-input" type="text"
+                       placeholder="e.g. French fries, rice, bread, soda..." />
+                <button id="calc-btn" class="btn-main" type="button">
+                  <span class="spark">⚡</span>
+                  Estimate tax
+                </button>
+              </div>
+
+              <div class="input-hint">
+                <span class="input-pill">Tip</span>
+                <span>
+                  In the Godot game, this is your main input: one tap, one result, instant awareness.
+                </span>
+              </div>
+
+              <p class="error-msg" id="error-msg">
+                Please type a food name first.
+              </p>
+            </div>
+
+            <!-- Lifetime config -->
+            <div class="panel life-panel">
+              <div class="panel-header">
+                <div class="panel-title">Lifetime settings</div>
+                <div class="panel-tag">
+                  <span class="panel-tag-dot"></span>
+                  Game sliders
+                </div>
+              </div>
+
+              <div class="life-row">
+                <span>Average life expectancy</span>
+                <strong><span id="age-span">80</span> years</strong>
+              </div>
+
+              <div class="life-slider-wrapper">
+                <label>
+                  <span>Adjust for your country / profile</span>
+                  <span>65y</span>
+                </label>
+                <input id="age-slider" type="range" min="60" max="90" value="80" />
+              </div>
+
+              <div class="life-row">
+                <span>Plays well with:</span>
+                <span>Difficulty modes, % tax sliders, local presets</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-footer">
+            <span>
+              On every play, the HUD shows
+              <strong>total tax paid</strong>, average per year, and the share of the food’s
+              final price that is tax.
+            </span>
+            <span class="pill-compact">
+              Core fantasy: “How much tax did this snack really cost me across my whole life?”
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: HUD + Result identity -->
+      <section class="hud">
+        <div class="hud-overlay-grid"></div>
+        <div class="hud-inner">
+          <div class="hud-header">
+            <div class="hud-title">Lifetime tax HUD</div>
+            <div class="hud-status">
+              <div class="hud-leds">
+                <span class="hud-led"></span>
+                <span class="hud-led"></span>
+                <span class="hud-led"></span>
+              </div>
+              <span>Real-time feedback</span>
+            </div>
+          </div>
+
+          <div class="hud-main">
+            <!-- Big number -->
+            <div class="hud-highlight">
+              <div class="hud-highlight-label">Estimated tax over your lifetime</div>
+              <div class="hud-number" id="hud-number">
+                <span class="currency">$</span>
+                <span id="tax-main">0</span><span class="decimals">.00</span>
+              </div>
+              <p class="hud-highlight-caption">
+                Based on the food <strong id="food-name-label">–</strong>,
+                approximate frequency of consumption and an estimated tax share of the price.
+              </p>
+
+              <div class="hud-chips">
+                <div class="hud-chip">
+                  Lifetime: <strong id="hud-years">80</strong> years
+                </div>
+                <div class="hud-chip">
+                  / year: <strong id="hud-per-year">$0.00</strong>
+                </div>
+                <div class="hud-chip">
+                  Tax share: <strong id="hud-tax-share">35%</strong> <small>(est.)</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Food details -->
+            <div class="hud-food-card">
+              <div class="hud-food-header">
+                <div class="hud-food-name">
+                  <span class="icon">🍟</span>
+                  <span id="hud-food-title">Awaiting a snack...</span>
+                </div>
+                <span class="hud-food-tag">1 play = 1 reality check</span>
+              </div>
+
+              <div class="hud-food-meta">
+                <span>
+                  Avg. price: <strong id="hud-price">$4.00</strong> / unit
+                </span>
+                <span>
+                  Est. units in life: <strong id="hud-units">0</strong>
+                </span>
+              </div>
+
+              <div class="hud-food-meta">
+                <span>
+                  Total spent: <strong id="hud-total-spent">$0.00</strong>
+                </span>
+                <span>
+                  Of which tax: <strong id="hud-total-tax">$0.00</strong>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hud-footer">
+            <div>
+              Inspired by civic education: show players how much of their food budget is hidden as tax.
+              In Godot 4, this becomes your main result screen after each calculation.
+            </div>
+            <div class="hud-progress">
+              <div class="hud-bar">
+                <div class="hud-bar-fill" id="hud-bar-fill"></div>
+              </div>
+              <div class="hud-mini"><span id="hud-percent-income">12%</span> of income</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Simple fake calculation – purely for visual demo of the feedback loop.
+    // In your actual Godot 4 game, you will replace this logic with real data & formulas.
+
+    const foodInput = document.getElementById("food-input");
+    const calcBtn = document.getElementById("calc-btn");
+    const errorMsg = document.getElementById("error-msg");
+    const ageSlider = document.getElementById("age-slider");
+    const ageSpan = document.getElementById("age-span");
+
+    const taxMain = document.getElementById("tax-main");
+    const hudYears = document.getElementById("hud-years");
+    const hudPerYear = document.getElementById("hud-per-year");
+    const hudTaxShare = document.getElementById("hud-tax-share");
+    const foodNameLabel = document.getElementById("food-name-label");
+    const hudFoodTitle = document.getElementById("hud-food-title");
+    const hudPrice = document.getElementById("hud-price");
+    const hudUnits = document.getElementById("hud-units");
+    const hudTotalSpent = document.getElementById("hud-total-spent");
+    const hudTotalTax = document.getElementById("hud-total-tax");
+    const hudBarFill = document.getElementById("hud-bar-fill");
+    const hudPercentIncome = document.getElementById("hud-percent-income");
+
+    function formatMoney(value) {
+      return "$" + value.toFixed(2);
+    }
+
+    ageSlider.addEventListener("input", () => {
+      ageSpan.textContent = ageSlider.value;
+      hudYears.textContent = ageSlider.value;
+    });
+
+    calcBtn.addEventListener("click", () => {
+      const name = foodInput.value.trim();
+      if (!name) {
+        errorMsg.style.display = "block";
+        return;
+      }
+      errorMsg.style.display = "none";
+
+      const age = parseInt(ageSlider.value, 10);
+
+      // Very rough fake stats based on name length (purely visual).
+      const basePrice = 2 + (name.length % 5);  // $2–$6
+      const weeklyUnits = 1 + ((name.length * 3) % 7); // 1–7 units / week
+
+      const yearlyUnits = weeklyUnits * 52;
+      const lifetimeUnits = yearlyUnits * age;
+      const taxShare = 0.25 + ((name.length % 4) * 0.05); // 25–40%
+
+      const totalSpent = lifetimeUnits * basePrice;
+      const totalTax = totalSpent * taxShare;
+
+      // Fill HUD
+      taxMain.textContent = totalTax.toFixed(0);
+      foodNameLabel.textContent = name;
+      hudFoodTitle.textContent = name;
+      hudPrice.textContent = formatMoney(basePrice);
+      hudUnits.textContent = lifetimeUnits.toLocaleString();
+      hudTotalSpent.textContent = formatMoney(totalSpent);
+      hudTotalTax.textContent = formatMoney(totalTax);
+      hudTaxShare.textContent = Math.round(taxShare * 100) + "%";
+      hudPerYear.textContent = formatMoney(totalTax / age);
+
+      // Fake “% of income” bar: assume $30,000 lifetime income per year
+      const lifetimeIncome = 30000 * age;
+      const percentIncome = Math.min(40, (totalTax / lifetimeIncome) * 100);
+      hudPercentIncome.textContent = percentIncome.toFixed(1) + "%";
+      hudBarFill.style.width = Math.max(5, percentIncome) + "%";
+    });
+  </script>
+</body>
+</html>
