@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tax on Your Plate – Casino Edition</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Space+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Casino palette */
+      --bg-main: #020617;
+      --bg-table: #064e3b;         /* green table */
+      --bg-card: #04101a;
+      --bg-slot: #0b1120;
+
+      --gold: #facc15;
+      --gold-soft: #fbbf24;
+      --chip-red: #ef4444;
+      --chip-green: #22c55e;
+      --chip-blue: #38bdf8;
+
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+
+      --border-gold: rgba(234, 179, 8, 0.85);
+      --border-soft: rgba(148, 163, 184, 0.4);
+
+      --radius-xl: 26px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+
+      --shadow-soft: 0 20px 45px rgba(0, 0, 0, 0.85);
+      --blur-bg: blur(18px);
+
+      --font-sans: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", sans-serif;
+      --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+                   Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background:
+        radial-gradient(circle at top, #065f46 0, transparent 55%),
+        radial-gradient(circle at bottom, #111827 0, transparent 55%),
+        var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    .frame-outer {
+      width: min(420px, 100vw - 16px);
+      max-height: calc(100vh - 16px);
+      aspect-ratio: 9 / 16; /* vertical 9:16 like TikTok/Reels */
+      border-radius: 32px;
+      padding: 4px;
+      background:
+        linear-gradient(135deg, #f59e0b, #e11d48, #22c55e, #38bdf8, #facc15);
+      box-shadow:
+        0 0 24px rgba(250, 204, 21, 0.6),
+        0 0 60px rgba(0, 0, 0, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-shell {
+      position: relative;
+      inset: 3px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(250, 204, 21, 0.16), transparent 60%),
+        radial-gradient(circle at 80% 100%, rgba(239, 68, 68, 0.22), transparent 60%),
+        linear-gradient(160deg, #020617, #020617);
+      box-shadow: var(--shadow-soft);
+      border: 2px solid rgba(15, 23, 42, 0.9);
+      padding: 10px 12px 14px;
+      overflow: hidden;
+    }
+
+    .app-shell::before {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(59, 130, 246, 0.6), transparent 60%),
+        radial-gradient(circle at 90% 100%, rgba(249, 115, 22, 0.6), transparent 55%);
+      opacity: 0.2;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .app-inner {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Header / marquee */
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 2px 4px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 0%, #fef9c3, #facc15);
+      box-shadow:
+        0 0 16px rgba(250, 204, 21, 0.9),
+        0 0 30px rgba(234, 179, 8, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #78350f;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-logo::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 999px;
+      border: 1px solid rgba(120, 53, 15, 0.7);
+    }
+
+    .brand-logo svg {
+      width: 70%;
+      height: 70%;
+    }
+
+    .brand-text-main {
+      font-weight: 800;
+      font-size: 0.96rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .brand-text-main span:first-child {
+      color: var(--gold);
+    }
+
+    .brand-text-main span:last-child {
+      color: #f97316;
+    }
+
+    .brand-tagline {
+      font-size: 0.64rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .badge-godot {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      backdrop-filter: blur(10px);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    .marquee {
+      margin-top: 2px;
+      padding: 4px 6px;
+      border-radius: 999px;
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          rgba(148, 163, 184, 0.26),
+          rgba(148, 163, 184, 0.26) 6px,
+          transparent 6px,
+          transparent 10px
+        );
+      position: relative;
+      overflow: hidden;
+    }
+
+    .marquee-inner {
+      position: relative;
+      z-index: 1;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      color: rgba(248, 250, 252, 0.85);
+    }
+
+    .marquee-inner span {
+      white-space: nowrap;
+    }
+
+    /* Main vertical layout */
+    .main-vertical {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    /* Hero title / explanation */
+    .hero {
+      border-radius: var(--radius-lg);
+      padding: 6px 8px;
+      background: linear-gradient(145deg, rgba(6, 95, 70, 0.98), rgba(5, 46, 22, 0.96));
+      border: 1px solid rgba(16, 185, 129, 0.7);
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.6);
+    }
+
+    .hero-kicker {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(209, 250, 229, 0.9);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 1rem;
+      line-height: 1.2;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .hero-title span.highlight {
+      color: var(--gold);
+    }
+
+    .hero-title span.highlight-alt {
+      color: #f97316;
+    }
+
+    .hero-subtitle {
+      font-size: 0.68rem;
+      color: rgba(226, 232, 240, 0.9);
+    }
+
+    .hero-subtitle strong {
+      color: #bbf7d0;
+      font-weight: 600;
+    }
+
+    /* Slot Machine block */
+    .slot-block {
+      flex: 1;
+      border-radius: var(--radius-xl);
+      padding: 8px 8px 10px;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(248, 250, 252, 0.12), transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(248, 113, 113, 0.18), transparent 60%),
+        linear-gradient(180deg, #020617, #020617);
+      border: 2px solid var(--border-gold);
+      box-shadow:
+        0 0 20px rgba(234, 179, 8, 0.65),
+        inset 0 0 0 2px rgba(15, 23, 42, 0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .slot-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2px 2px 4px;
+    }
+
+    .slot-title {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+
+    .slot-lights {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .slot-light {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: 1px solid rgba(250, 250, 250, 0.9);
+      box-shadow:
+        0 0 8px rgba(250, 204, 21, 0.9),
+        0 0 12px rgba(248, 250, 252, 0.9);
+      background: radial-gradient(circle at 30% 0%, #fef3c7, #facc15);
+    }
+
+    .slot-lights .slot-light:nth-child(2) {
+      box-shadow:
+        0 0 8px rgba(248, 113, 113, 0.9),
+        0 0 12px rgba(248, 250, 252, 0.9);
+      background: radial-gradient(circle at 30% 0%, #fecaca, #f97316);
+    }
+
+    .slot-lights .slot-light:nth-child(3) {
+      box-shadow:
+        0 0 8px rgba(52, 211, 153, 0.9),
+        0 0 12px rgba(248, 250, 252, 0.9);
+      background: radial-gradient(circle at 30% 0%, #dcfce7, #22c55e);
+    }
+
+    /* Reels area */
+    .slot-reels {
+      border-radius: 18px;
+      background: radial-gradient(circle at top, #1f2937, #020617 70%);
+      border: 2px solid rgba(15, 23, 42, 0.9);
+      box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.9);
+      padding: 6px 6px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .slot-reels-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.65rem;
+      color: rgba(148, 163, 184, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .slot-reels-inner {
+      margin-top: 2px;
+      border-radius: 16px;
+      background: linear-gradient(90deg, #020617, #020617);
+      padding: 4px 5px 5px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 4px;
+    }
+
+    .reel {
+      border-radius: 12px;
+      background: radial-gradient(circle at top, #111827, #020617 75%);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      box-shadow:
+        inset 0 0 10px rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(15, 23, 42, 0.9);
+      padding: 3px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .reel-label {
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .reel-value {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      text-shadow:
+        0 0 10px rgba(250, 204, 21, 0.9),
+        0 0 20px rgba(252, 211, 77, 0.9);
+    }
+
+    .reel-value.small {
+      font-size: 0.76rem;
+      color: #bfdbfe;
+      text-shadow:
+        0 0 8px rgba(59, 130, 246, 0.9),
+        0 0 12px rgba(191, 219, 254, 0.9);
+    }
+
+    .slot-reels-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .slot-reels-bottom span strong {
+      color: #f97316;
+    }
+
+    /* Input + button row */
+    .slot-input-row {
+      margin-top: 2px;
+      border-radius: var(--radius-lg);
+      padding: 6px 6px 5px;
+      background: linear-gradient(135deg, #0f172a, #020617);
+      border: 1px solid var(--border-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .input-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+    }
+
+    .input-row {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .input-row input[type="text"] {
+      flex: 1;
+      background: #020617;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 6px 10px;
+      color: var(--text-main);
+      font-size: 0.72rem;
+      outline: none;
+      transition: border-color 0.16s, box-shadow 0.16s, background 0.16s;
+    }
+
+    .input-row input[type="text"]::placeholder {
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .input-row input[type="text"]:focus {
+      border-color: var(--gold);
+      box-shadow:
+        0 0 0 1px rgba(250, 204, 21, 0.6),
+        0 0 10px rgba(234, 179, 8, 0.7);
+      background: #020617;
+    }
+
+    .btn-main {
+      border-radius: 999px;
+      border: none;
+      padding: 6px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: radial-gradient(circle at 30% 0%, #fef9c3, #f97316);
+      color: #020617;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      box-shadow:
+        0 6px 18px rgba(248, 113, 22, 0.9),
+        0 0 18px rgba(250, 204, 21, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      transition: transform 0.08s ease-out, box-shadow 0.08s ease-out,
+        filter 0.08s ease-out;
+    }
+
+    .btn-main span.spark {
+      font-size: 1rem;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow:
+        0 8px 22px rgba(248, 113, 22, 1),
+        0 0 24px rgba(250, 204, 21, 1);
+    }
+
+    .btn-main:active {
+      transform: translateY(0);
+      box-shadow:
+        0 5px 14px rgba(248, 113, 22, 0.8),
+        0 0 18px rgba(250, 204, 21, 0.8);
+    }
+
+    .input-hint {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chip-small {
+      padding: 2px 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .error-msg {
+      margin-top: 3px;
+      font-size: 0.65rem;
+      color: #f97373;
+      display: none;
+    }
+
+    /* Lifetime slider (bets) */
+    .bet-panel {
+      border-radius: var(--radius-lg);
+      padding: 6px 7px 6px;
+      background: linear-gradient(145deg, #020617, #030712);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .bet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.64rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(156, 163, 175, 0.9);
+    }
+
+    .bet-header span strong {
+      color: var(--gold);
+    }
+
+    .bet-slider-wrap {
+      margin-top: 2px;
+    }
+
+    .bet-slider-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .bet-slider-wrap input[type="range"] {
+      width: 100%;
+      accent-color: var(--gold);
+    }
+
+    .bet-summary {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.6rem;
+      color: rgba(209, 213, 219, 0.9);
+    }
+
+    .bet-summary span strong {
+      color: #38bdf8;
+    }
+
+    /* Footer / chips info */
+    .footer-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .footer-text {
+      font-size: 0.58rem;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .chip-stack {
+      display: flex;
+      gap: 3px;
+    }
+
+    .chip {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid #111827;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
+      position: relative;
+    }
+
+    .chip::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 999px;
+      border: 2px solid #111827;
+      background: radial-gradient(circle at 30% 0%, #f9fafb, #e5e7eb);
+    }
+
+    .chip.red {
+      background:
+        conic-gradient(
+          from 0deg,
+          #ef4444 0 40%,
+          #f9fafb 40% 60%,
+          #ef4444 60% 100%
+        );
+    }
+
+    .chip.green {
+      background:
+        conic-gradient(
+          from 0deg,
+          #22c55e 0 40%,
+          #f9fafb 40% 60%,
+          #22c55e 60% 100%
+        );
+    }
+
+    .chip.blue {
+      background:
+        conic-gradient(
+          from 0deg,
+          #38bdf8 0 40%,
+          #f9fafb 40% 60%,
+          #38bdf8 60% 100%
+        );
+    }
+  </style>
+</head>
+<body>
+  <div class="frame-outer">
+    <div class="app-shell">
+      <div class="app-inner">
+        <!-- Header -->
+        <header class="app-header">
+          <div class="brand">
+            <div class="brand-logo">
+              <!-- Simple casino plate + bars icon -->
+              <svg viewBox="0 0 40 40" aria-hidden="true">
+                <defs>
+                  <linearGradient id="plate" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#fef9c3"/>
+                    <stop offset="100%" stop-color="#facc15"/>
+                  </linearGradient>
+                  <linearGradient id="bars" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#b91c1c"/>
+                    <stop offset="100%" stop-color="#f97316"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="20" cy="20" r="14" fill="url(#plate)" opacity="0.96"/>
+                <circle cx="20" cy="20" r="10.5" fill="#020617"/>
+                <rect x="13" y="17" width="3" height="8" rx="1" fill="url(#bars)" />
+                <rect x="18.5" y="14" width="3" height="11" rx="1" fill="url(#bars)" />
+                <rect x="24" y="19" width="3" height="6" rx="1" fill="url(#bars)" />
+              </svg>
+            </div>
+            <div>
+              <div class="brand-text-main">
+                <span>Tax</span><span>on Your Plate</span>
+              </div>
+              <div class="brand-tagline">
+                Lifetime food tax · Casino Edition
+              </div>
+            </div>
+          </div>
+          <div class="badge-godot">
+            <span class="badge-dot"></span>
+            <span>UI concept for Godot&nbsp;4</span>
+          </div>
+        </header>
+
+        <div class="marquee">
+          <div class="marquee-inner">
+            <span>ENTER FOOD · PULL LEVER · SEE LIFETIME TAX</span>
+          </div>
+        </div>
+
+        <!-- Main vertical stack -->
+        <main class="main-vertical">
+          <!-- Hero / explanation -->
+          <section class="hero">
+            <div class="hero-kicker">
+              <span>Gameplay loop</span>
+              <span>Food → Tax jackpot</span>
+            </div>
+            <h1 class="hero-title">
+              Every <span class="highlight">snack</span> is a
+              <span class="highlight-alt">bet with taxes</span>.
+            </h1>
+            <p class="hero-subtitle">
+              Type a food you eat all the time. The game estimates how much tax you “lose” to the house during
+              a whole life &mdash; turning civic education into a
+              <strong>slot-machine style shock</strong>.
+            </p>
+          </section>
+
+          <!-- Slot machine main block -->
+          <section class="slot-block">
+            <div class="slot-header">
+              <div class="slot-title">Lifetime Tax Machine</div>
+              <div class="slot-lights">
+                <div class="slot-light"></div>
+                <div class="slot-light"></div>
+                <div class="slot-light"></div>
+              </div>
+            </div>
+
+            <!-- Reels -->
+            <div class="slot-reels">
+              <div class="slot-reels-top">
+                <span>Jackpot · Tax total</span>
+                <span id="food-name-label">Waiting for your bet...</span>
+              </div>
+
+              <div class="slot-reels-inner">
+                <div class="reel">
+                  <div class="reel-label">Total tax</div>
+                  <div class="reel-value">
+                    <span id="tax-main">0</span>
+                  </div>
+                </div>
+                <div class="reel">
+                  <div class="reel-label">/ year</div>
+                  <div class="reel-value small" id="hud-per-year">$0.00</div>
+                </div>
+                <div class="reel">
+                  <div class="reel-label">tax %</div>
+                  <div class="reel-value small" id="hud-tax-share">35%</div>
+                </div>
+              </div>
+
+              <div class="slot-reels-bottom">
+                <span>Food: <strong id="hud-food-title">–</strong></span>
+                <span>1 play = 1 reality check</span>
+              </div>
+            </div>
+
+            <!-- Input + button -->
+            <div class="slot-input-row">
+              <div class="input-label">
+                Choose your “lucky” food
+              </div>
+              <div class="input-row">
+                <input id="food-input" type="text"
+                       placeholder="Pizza, soda, bread, fries..." />
+                <button id="calc-btn" class="btn-main" type="button">
+                  <span class="spark">🎰</span>
+                  Spin tax
+                </button>
+              </div>
+              <div class="input-hint">
+                <span class="chip-small">Core loop</span>
+                <span>In the Godot game, players tap once, see the reels spin, and watch their lifetime tax “jackpot”.</span>
+              </div>
+              <p class="error-msg" id="error-msg">
+                Type a food name before spinning.
+              </p>
+            </div>
+
+            <!-- Lifetime slider (bet size = life expectancy) -->
+            <div class="bet-panel">
+              <div class="bet-header">
+                <span>Life expectancy</span>
+                <span>Years: <strong id="age-span">80</strong></span>
+              </div>
+              <div class="bet-slider-wrap">
+                <div class="bet-slider-row">
+                  <span>Short game: 60y</span>
+                  <span>Long game: 90y</span>
+                </div>
+                <input id="age-slider" type="range" min="60" max="90" value="80" />
+              </div>
+              <div class="bet-summary">
+                <span>
+                  Lifetime units:
+                  <strong id="hud-units">0</strong>
+                </span>
+                <span>
+                  Avg. price:
+                  <strong id="hud-price">$4.00</strong>
+                </span>
+              </div>
+              <div class="bet-summary">
+                <span>
+                  Total spent:
+                  <strong id="hud-total-spent">$0.00</strong>
+                </span>
+                <span>
+                  Tax in that total:
+                  <strong id="hud-total-tax">$0.00</strong>
+                </span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Footer info -->
+          <footer class="footer-info">
+            <div class="footer-text">
+              Turn the casino vibe into awareness: in Godot 4, this layout becomes your main result screen after each spin.
+            </div>
+            <div class="chip-stack">
+              <div class="chip red"></div>
+              <div class="chip green"></div>
+              <div class="chip blue"></div>
+            </div>
+          </footer>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Same simple fake calculation as before – only for visual demo.
+    // In Godot 4 you would replace this with real data / formulas.
+
+    const foodInput = document.getElementById("food-input");
+    const calcBtn = document.getElementById("calc-btn");
+    const errorMsg = document.getElementById("error-msg");
+    const ageSlider = document.getElementById("age-slider");
+    const ageSpan = document.getElementById("age-span");
+
+    const taxMain = document.getElementById("tax-main");
+    const hudPerYear = document.getElementById("hud-per-year");
+    const hudTaxShare = document.getElementById("hud-tax-share");
+    const foodNameLabel = document.getElementById("food-name-label");
+    const hudFoodTitle = document.getElementById("hud-food-title");
+    const hudPrice = document.getElementById("hud-price");
+    const hudUnits = document.getElementById("hud-units");
+    const hudTotalSpent = document.getElementById("hud-total-spent");
+    const hudTotalTax = document.getElementById("hud-total-tax");
+
+    function formatMoney(value) {
+      return "$" + value.toFixed(2);
+    }
+
+    ageSlider.addEventListener("input", () => {
+      ageSpan.textContent = ageSlider.value;
+    });
+
+    calcBtn.addEventListener("click", () => {
+      const name = foodInput.value.trim();
+      if (!name) {
+        errorMsg.style.display = "block";
+        return;
+      }
+      errorMsg.style.display = "none";
+
+      const age = parseInt(ageSlider.value, 10);
+
+      // Very rough fake stats based on name length (purely visual).
+      const basePrice = 2 + (name.length % 5);           // $2–$6
+      const weeklyUnits = 1 + ((name.length * 3) % 7);   // 1–7 units / week
+
+      const yearlyUnits = weeklyUnits * 52;
+      const lifetimeUnits = yearlyUnits * age;
+      const taxShare = 0.25 + ((name.length % 4) * 0.05); // 25–40%
+
+      const totalSpent = lifetimeUnits * basePrice;
+      const totalTax = totalSpent * taxShare;
+
+      // Fill UI
+      taxMain.textContent = totalTax.toFixed(0);
+      foodNameLabel.textContent = name;
+      hudFoodTitle.textContent = name;
+      hudPrice.textContent = formatMoney(basePrice);
+      hudUnits.textContent = lifetimeUnits.toLocaleString();
+      hudTotalSpent.textContent = formatMoney(totalSpent);
+      hudTotalTax.textContent = formatMoney(totalTax);
+      hudTaxShare.textContent = Math.round(taxShare * 100) + "%";
+      hudPerYear.textContent = formatMoney(totalTax / age);
+    });
+  </script>
+</body>
+</html>
