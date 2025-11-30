@@ -17,7 +17,6 @@ mouse_filter = 1
 script = ExtResource("1_bxndt")
 
 [node name="main_loader" type="PanelContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,16 +41,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("3_ahmiy")
 stretch_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="main_loader/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_right = 30
-
-[node name="ProgressBar" type="ProgressBar" parent="main_loader/VBoxContainer/MarginContainer"]
-layout_mode = 2
-indeterminate = true
-editor_preview_indeterminate = false
 
 [node name="MarginContainer3" type="MarginContainer" parent="main_loader/VBoxContainer"]
 layout_mode = 2

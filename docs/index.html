@@ -285,7 +285,7 @@ async function isBuildNumberDifferent(url) {
 	<script type='text/javascript' src='index.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":true,"fileSizes":{"index.pck":40486404,"index.wasm":38057390},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":true,"fileSizes":{"index.pck":40486116,"index.wasm":38057390},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
 
 		(async () => {
 		const isDifferent = await isBuildNumberDifferent("/imposteiro/assets/version.json");
@@ -361,7 +361,6 @@ async function isBuildNumberDifferent(url) {
 
 			function displayFailureNotice(err) {
 				var msg = err.message || err;
-				console.error(msg);
 				setStatusNotice(msg);
 				setStatusMode('notice');
 				initializing = false;
@@ -389,7 +388,7 @@ async function isBuildNumberDifferent(url) {
 				}).then(() => {
 					setStatusMode('hidden');
 					initializing = false;
-					showKeyboard();
+					// showKeyboard();
 				}, displayFailureNotice);
 			}
 
