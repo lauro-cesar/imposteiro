@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd633jixspkhu"]
+
+[ext_resource type="AudioStream" uid="uid://by23v6j6gs3bm" path="res://assets/sounds/Interface_Bleeps_OGG/sequence.wav" id="1_tkllv"]
+[ext_resource type="Script" uid="uid://qq5x6txxh6cn" path="res://scenes/game_loop/active_word_group_scene/finished_audio_player.gd" id="2_l5kw0"]
+
+[node name="finished_audio_player" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_tkllv")
+playback_type = 2
+script = ExtResource("2_l5kw0")

@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn3rw6lrj23t7"]
+
+[ext_resource type="Script" uid="uid://uaedaw4xi0ob" path="res://scenes/onboarding/onboarding.gd" id="1_bxndt"]
+[ext_resource type="Script" uid="uid://cge3qx0wdn4in" path="res://scenes/onboarding/main_loader.gd" id="4_bxndt"]
+[ext_resource type="Texture2D" uid="uid://h0wgn6ydqyl1" path="res://assets/logotipos/logotipo_english_key.png" id="4_fnivr"]
+
+[sub_resource type="Environment" id="Environment_10rrh"]
+
+[node name="onboarding_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_bxndt")
+
+[node name="main_loader" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_bxndt")
+
+[node name="ColorRect" type="ColorRect" parent="main_loader"]
+layout_mode = 2
+color = Color(0.866667, 0.901961, 0.94902, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main_loader"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="main_loader/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="main_loader/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_fnivr")
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="main_loader/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="ProgressBar" type="ProgressBar" parent="main_loader/VBoxContainer/MarginContainer"]
+layout_mode = 2
+indeterminate = true
+editor_preview_indeterminate = false
+
+[node name="MarginContainer3" type="MarginContainer" parent="main_loader/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_10rrh")

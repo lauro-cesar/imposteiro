@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy0ejj3otskau"]
+
+[ext_resource type="Script" uid="uid://cpl70mtfg70q0" path="res://scenes/game_loop/stereo_speaker/left_player.gd" id="1_kp4yp"]
+
+[node name="left_player" type="AudioStreamPlayer"]
+bus = &"left_only"
+playback_type = 1
+script = ExtResource("1_kp4yp")

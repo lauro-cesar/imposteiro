@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0j4d4duanv4h"]
+
+[ext_resource type="Script" uid="uid://byfpta1jd5efn" path="res://scenes/onboarding/button_play_audio_data.gd" id="1_4gsmm"]
+
+[node name="button_play_audio_data" type="Button"]
+script = ExtResource("1_4gsmm")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

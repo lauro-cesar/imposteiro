@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://l7051vj8cbu1"]
+
+[ext_resource type="Script" uid="uid://r4no08v6xfwg" path="res://scenes/logger_overlay/logger_overlay.gd" id="1_uqb5w"]
+
+[node name="logger_overlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uqb5w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="error_log" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Error LOG"
+
+[node name="debug_log" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Debug log"
+
+[node name="hide_me" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Esconder logs"
+
+[node name="logs_container" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="error_logs_item_list" type="ItemList" parent="VBoxContainer/logs_container"]
+layout_mode = 2
+icon_mode = 0
+metadata/_tab_index = 0
+
+[node name="debug_logs_item_list" type="ItemList" parent="VBoxContainer/logs_container"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/error_log" to="." method="_on_test_error_log_signal"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/debug_log" to="." method="_on_test_debug_log_signal"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/hide_me" to="." method="_on_hide_logger_overlay"]

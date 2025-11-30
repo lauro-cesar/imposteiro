@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3 uid="uid://dv741wxhsd0wt"]
+
+[ext_resource type="Script" uid="uid://q8akyuwc6w8n" path="res://scenes/game_loop/list_word_groups_scene/list_word_groups_scene.gd" id="1_vvegi"]
+[ext_resource type="PackedScene" uid="uid://b0l716m044xc" path="res://scenes/generic_http_client/generic_http_client.tscn" id="2_khy1t"]
+[ext_resource type="Script" uid="uid://cxvcl1hlsltps" path="res://scenes/game_loop/list_word_groups_scene/lista_de_grupos.gd" id="3_5ukep"]
+[ext_resource type="Texture2D" uid="uid://btgio5rwmbo0e" path="res://assets/logotipos/listenup_small.png" id="3_yvljf"]
+[ext_resource type="FontFile" uid="uid://884ojyxh5s8h" path="res://assets/fonts/Roboto/static/Roboto_Condensed-ExtraBold.ttf" id="4_dmnyg"]
+[ext_resource type="PackedScene" uid="uid://c5u868vg77bwf" path="res://scenes/game_loop/stereo_speaker/stereo_speaker.tscn" id="4_khy1t"]
+[ext_resource type="PackedScene" uid="uid://bdt3ya6clq4k5" path="res://scenes/game_loop/list_word_groups_scene/card_open_group/card_open_word_group.tscn" id="4_tbq40"]
+
+[node name="list_word_groups_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_vvegi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0588235, 0.298039, 0.380392, 1)
+
+[node name="stereo_audio_payer" parent="." instance=ExtResource("4_khy1t")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+grow_vertical = 0
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 20
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_yvljf")
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="title_label" type="Label" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_dmnyg")
+theme_override_font_sizes/font_size = 80
+text = "Clique no grupo para iniciar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer3/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="lista_de_grupos" type="VBoxContainer" parent="VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 2.13
+script = ExtResource("3_5ukep")
+margins_px = 4
+card_open_group = ExtResource("4_tbq40")
+
+[node name="generic_http_client" parent="." instance=ExtResource("2_khy1t")]

@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkk6ox4b6eotq"]
+
+[ext_resource type="FontFile" uid="uid://cwqsy61rj5vc4" path="res://assets/fonts/Kenney Future.ttf" id="1_ma8s5"]
+[ext_resource type="Script" uid="uid://cncwe8mvefv6" path="res://scenes/game_loop/user_text_input.gd" id="1_pv5hk"]
+[ext_resource type="FontFile" uid="uid://ch8sb8anxeqym" path="res://assets/fonts/Kenney Future Narrow.ttf" id="4_ehgjx"]
+[ext_resource type="Script" uid="uid://0tgptjrrld7n" path="res://scenes/game_loop/user_response_input.gd" id="4_g1yjb"]
+
+[node name="GameLoop" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="header" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/margin_bottom = 20
+
+[node name="user_text_input" type="Label" parent="header"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ma8s5")
+theme_override_font_sizes/font_size = 30
+text = "new input via android"
+script = ExtResource("1_pv5hk")
+
+[node name="body" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="user_response_input" type="TextEdit" parent="body"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ehgjx")
+theme_override_font_sizes/font_size = 80
+editable = false
+context_menu_enabled = false
+drag_and_drop_selection_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+scroll_fit_content_height = true
+caret_type = 1
+caret_move_on_right_click = false
+caret_multiple = false
+use_default_word_separators = false
+draw_spaces = true
+script = ExtResource("4_g1yjb")
+
+[node name="footer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[connection signal="text_changed" from="body/user_response_input" to="body/user_response_input" method="_on_text_changed"]

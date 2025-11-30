@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjbtuip1ysj4b"]
+
+[ext_resource type="Script" uid="uid://b6o6sadd064tq" path="res://scenes/game_loop/response_container.gd" id="1_l2i68"]
+
+[node name="response_container" type="GridContainer"]
+columns = 15
+script = ExtResource("1_l2i68")

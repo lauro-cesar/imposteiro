@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://con7n7e7gypib"]
+
+[ext_resource type="Script" uid="uid://dg33dkjmlke0t" path="res://scenes/main/main_scene.gd" id="1_ei2sf"]
+[ext_resource type="PackedScene" uid="uid://dn3rw6lrj23t7" path="res://scenes/onboarding/onboarding.tscn" id="2_ubvhi"]
+
+[node name="main_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ei2sf")
+
+[node name="onboarding" parent="." instance=ExtResource("2_ubvhi")]
+layout_mode = 1

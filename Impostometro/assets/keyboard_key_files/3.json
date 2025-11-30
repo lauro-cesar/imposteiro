@@ -1,0 +1,57 @@
+[
+		{ 
+		"key_name": "SPACER", 
+		"key_value":"SPACER",
+		"key_size":3.0,
+		"key_type":"spacer"
+	},
+	{ 
+		"key_name": "Z", 
+		"key_value":"Z",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "X", 
+		"key_value":"X",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "C", 
+		"key_value":"C",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "V", 
+		"key_value":"V",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "B", 
+		"key_value":"B",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "N", 
+		"key_value":"N",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "M", 
+		"key_value":"M",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+		{ 
+		"key_name": "SPACER", 
+		"key_value":"SPACER",
+		"key_size":2.0,
+		"key_type":"dummy"
+	}
+		
+]

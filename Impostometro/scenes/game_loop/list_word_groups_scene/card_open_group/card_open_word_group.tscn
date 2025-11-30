@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdt3ya6clq4k5"]
+
+[ext_resource type="Script" uid="uid://py57w5fopxit" path="res://scenes/game_loop/list_word_groups_scene/card_open_group/card_open_word_group.gd" id="1_wdwmm"]
+[ext_resource type="Texture2D" uid="uid://cyytktdypjt44" path="res://assets/icones/ButtonText_Large_Orange_Square.png" id="3_ppl6k"]
+[ext_resource type="PackedScene" uid="uid://divem258d7250" path="res://button_open_group.tscn" id="3_wdwmm"]
+
+[node name="card_open_word_group" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 120)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.5
+offset_top = -60.0
+offset_right = 79.5
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wdwmm")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("3_ppl6k")
+region_rect = Rect2(0, 0, 400, 129)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="button_container" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="button_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+theme_override_constants/margin_left = 20
+
+[node name="button_open_group" parent="button_container" instance=ExtResource("3_wdwmm")]
+layout_mode = 2

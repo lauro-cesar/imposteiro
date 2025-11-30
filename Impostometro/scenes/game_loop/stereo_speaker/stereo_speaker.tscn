@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5u868vg77bwf"]
+
+[ext_resource type="Script" uid="uid://c3g4mv8lea7ds" path="res://scenes/game_loop/stereo_speaker/stereo_speaker.gd" id="1_4fxx2"]
+[ext_resource type="PackedScene" uid="uid://cb2or4s2mwn8n" path="res://scenes/game_loop/master_player.tscn" id="2_kgmo3"]
+
+[node name="stereo_audio_payer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4fxx2")
+
+[node name="master_player" parent="." instance=ExtResource("2_kgmo3")]

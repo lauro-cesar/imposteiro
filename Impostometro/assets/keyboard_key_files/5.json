@@ -1,0 +1,57 @@
+[
+		{ 
+		"key_name": "SPACER", 
+		"key_value":"SPACER",
+		"key_size":3.0,
+		"key_type":"dummy"
+	},
+		{ 
+		"key_name": "e-acute", 
+		"key_value":"é",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "apostrophe", 
+		"key_value":"'",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+		{ 
+		"key_name": "comma", 
+		"key_value":",",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+			{ 
+		"key_name": "colon", 
+		"key_value":":",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+			{ 
+		"key_name": "question-mark", 
+		"key_value":"?",
+		"key_size":1.0,
+		"key_type":"key"
+	},	
+			{ 
+		"key_name": "exclamation-mark", 
+		"key_value":"!",
+		"key_size":1.0,
+		"key_type":"key"
+	},	
+				{ 
+		"key_name": "full-stop", 
+		"key_value":".",
+		"key_size":1.0,
+		"key_type":"key"
+	},	
+		{ 
+		"key_name": "SPACER", 
+		"key_value":"SPACER",
+		"key_size":3.0,
+		"key_type":"dummy"
+	}
+		
+]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb2or4s2mwn8n"]
+
+[ext_resource type="Script" uid="uid://cnjn1x43k2doa" path="res://scenes/game_loop/stereo_speaker/master_player.gd" id="1_dllj2"]
+
+[node name="master_player" type="AudioStreamPlayer"]
+playback_type = 1
+script = ExtResource("1_dllj2")

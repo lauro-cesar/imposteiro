@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://3k6i1308iery"]
+
+[ext_resource type="Script" uid="uid://hb2fet5kd2d1" path="res://scenes/auth_wall/auth_wall_scene.gd" id="1_gvr4l"]
+[ext_resource type="Script" uid="uid://bpnfsrpvgtbj1" path="res://scenes/auth_wall/auth_settings_pipeline.gd" id="2_6kbjx"]
+[ext_resource type="PackedScene" uid="uid://l7051vj8cbu1" path="res://scenes/logger_overlay/logger_overlay.tscn" id="2_d3y78"]
+[ext_resource type="Script" uid="uid://chdlu5cdqvb7e" path="res://scenes/auth_wall/auth_pipeline.gd" id="2_opbdq"]
+[ext_resource type="Script" uid="uid://c6qcw0bdm0ot0" path="res://scenes/auth_wall/login_pipeline.gd" id="3_6baot"]
+[ext_resource type="Script" uid="uid://dciwfcvbe8nms" path="res://scenes/auth_wall/logoff_pipeline.gd" id="4_uixu8"]
+
+[node name="auth_wall_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gvr4l")
+
+[node name="logger_overlay" parent="." instance=ExtResource("2_d3y78")]
+visible = false
+layout_mode = 1
+
+[node name="auth_settings_pipeline" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_6kbjx")
+
+[node name="auth_pipeline" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_opbdq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="auth_pipeline"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -13.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="auth_pipeline/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+step = 1.0
+indeterminate = true
+editor_preview_indeterminate = false
+
+[node name="login_pipeline" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_6baot")
+
+[node name="login_bg" type="TextureRect" parent="login_pipeline"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="logoff_pipeline" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_uixu8")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbjqojh882ke3"]
+
+[ext_resource type="Script" uid="uid://5snya45w7p5r" path="res://scenes/game_loop/active_word_group_scene/key_container.gd" id="1_bihnj"]
+
+[node name="key_container" type="PanelContainer"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+script = ExtResource("1_bihnj")

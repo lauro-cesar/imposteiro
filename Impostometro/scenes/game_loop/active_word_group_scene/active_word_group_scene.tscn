@@ -1,0 +1,600 @@
+[gd_scene load_steps=27 format=3 uid="uid://ukd6bv6gq2y3"]
+
+[ext_resource type="Script" uid="uid://cck03yrhw25xf" path="res://scenes/game_loop/active_word_group_scene/active_word_group_scene.gd" id="1_84csh"]
+[ext_resource type="PackedScene" uid="uid://bm1tyjg47c8sj" path="res://scenes/game_loop/active_word_group_scene/dismiss_open_word_group.tscn" id="1_lkj8y"]
+[ext_resource type="Script" uid="uid://dd40sy2cy028r" path="res://scenes/game_loop/active_word_group_scene/active_word_index_label.gd" id="3_3mihp"]
+[ext_resource type="PackedScene" uid="uid://d2hoe120ucgg" path="res://scenes/game_loop/active_word_group_scene/play_active_word_button.tscn" id="3_4voio"]
+[ext_resource type="Script" uid="uid://c4h7fg6kprbu1" path="res://scenes/game_loop/active_word_group_scene/total_words.gd" id="3_06alm"]
+[ext_resource type="Texture2D" uid="uid://2c5wdunhpxfx" path="res://assets/Basic_GUI_Bundle/Icons/SVG/Icon_Small_Blank_Menu.svg" id="3_ilyfu"]
+[ext_resource type="Script" uid="uid://qhpqxk1i4pbp" path="res://scenes/game_loop/active_word_group_scene/active_word_group_countdown_container.gd" id="3_o3lr4"]
+[ext_resource type="Script" uid="uid://bgmmdhb8o46j2" path="res://scenes/game_loop/active_word_group_scene/total_acertos.gd" id="3_wlv43"]
+[ext_resource type="FontFile" uid="uid://884ojyxh5s8h" path="res://assets/fonts/Roboto/static/Roboto_Condensed-ExtraBold.ttf" id="4_0qbua"]
+[ext_resource type="Script" uid="uid://b8wervrrrc4un" path="res://scenes/game_loop/active_word_group_scene/count_down_progress.gd" id="4_r7wqo"]
+[ext_resource type="Script" uid="uid://8td2f0l8vlo0" path="res://scenes/game_loop/active_word_group_scene/active_response_input.gd" id="5_hkg6d"]
+[ext_resource type="PackedScene" uid="uid://dmy20osp2d18r" path="res://conferir_resposta_button.tscn" id="6_wlv43"]
+[ext_resource type="Script" uid="uid://bcpriapp5mp01" path="res://scenes/game_loop/active_word_group_scene/mobile_keyboard_container.gd" id="7_f0ofe"]
+[ext_resource type="Script" uid="uid://c7sc40t1cijgt" path="res://scenes/game_loop/active_word_group_scene/debug_word_list.gd" id="8_30j6s"]
+[ext_resource type="Texture2D" uid="uid://dxvfdywvvvwgo" path="res://assets/Basic_GUI_Bundle/Icons/SVG/Icon_Small_Blank_Audio.svg" id="10_avvks"]
+[ext_resource type="PackedScene" uid="uid://bdy5gcaixl23b" path="res://scenes/game_loop/active_word_group_scene/key_row.tscn" id="10_wlv43"]
+[ext_resource type="FontFile" uid="uid://cu4awhdtuyj5y" path="res://assets/fonts/OpenType (.otf)/Kaph-Regular.otf" id="14_3mihp"]
+[ext_resource type="PackedScene" uid="uid://buqr7kqp1clv4" path="res://close_count_down_container_button.tscn" id="16_3mihp"]
+[ext_resource type="Script" uid="uid://c6opyyc1pvhp7" path="res://scenes/game_loop/active_word_group_scene/success_msg_container.gd" id="17_vlh3g"]
+[ext_resource type="Script" uid="uid://td7yj5i7e5o2" path="res://scenes/game_loop/active_word_group_scene/download_progress.gd" id="18_qbmvy"]
+[ext_resource type="Script" uid="uid://86425fpyl6hl" path="res://scenes/game_loop/active_word_group_scene/fail_msg_container.gd" id="19_t6qyx"]
+[ext_resource type="Script" uid="uid://bmcxsa6fc1bst" path="res://scenes/game_loop/active_word_group_scene/finished_msg_container.gd" id="20_0ofm4"]
+[ext_resource type="Texture2D" uid="uid://nuv45jycsxyr" path="res://assets/Basic_GUI_Bundle/Icons/SVG/Icon_Small_Blank_Arrow.svg" id="22_1avc7"]
+[ext_resource type="Texture2D" uid="uid://csxrurmvp7www" path="res://assets/icones/Icon_Small_red_X.png" id="22_3rjam"]
+[ext_resource type="PackedScene" uid="uid://pmsh1f6d0dd6" path="res://acerto_label.tscn" id="22_ilyfu"]
+[ext_resource type="Texture2D" uid="uid://nt5bevx1bi8c" path="res://assets/logotipos/listenup.png" id="24_kjmyi"]
+
+[node name="active_word_group_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_84csh")
+
+[node name="scene_container" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="debug_word_list" type="VBoxContainer" parent="scene_container"]
+layout_mode = 2
+script = ExtResource("8_30j6s")
+
+[node name="ColorRect" type="ColorRect" parent="scene_container"]
+layout_mode = 2
+color = Color(0.057, 0.29925, 0.38, 1)
+
+[node name="TextureRect" type="TextureRect" parent="scene_container"]
+modulate = Color(1, 1, 1, 0.2)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("24_kjmyi")
+
+[node name="Vbox" type="VBoxContainer" parent="scene_container"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="scene_container/Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="scene_container/Vbox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="scene_container/Vbox/VBoxContainer"]
+layout_mode = 2
+
+[node name="active_response_input" type="Label" parent="scene_container/Vbox/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 70
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("5_hkg6d")
+
+[node name="MarginContainer" type="MarginContainer" parent="scene_container/Vbox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="scene_container/Vbox/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="MarginContainer" parent="scene_container/Vbox/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="scene_container/Vbox/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="scene_container/Vbox/VBoxContainer/HBoxContainer2"]
+modulate = Color(0, 0, 0, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="scene_container/Vbox/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="conferir_resposta_button" parent="scene_container/Vbox/VBoxContainer/HBoxContainer2/MarginContainer2" instance=ExtResource("6_wlv43")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="scene_container/Vbox/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="play_active_word_button" parent="scene_container/Vbox/VBoxContainer/HBoxContainer2/MarginContainer" instance=ExtResource("3_4voio")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+icon = ExtResource("10_avvks")
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="scene_container/Vbox/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="scene_container/Vbox/VBoxContainer/HBoxContainer5"]
+modulate = Color(0, 0, 0, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="type_what_you_heard" type="Label" parent="scene_container/Vbox/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("14_3mihp")
+theme_override_font_sizes/font_size = 25
+text = "Type the word played and click SUBMIT."
+
+[node name="PanelContainer2" type="PanelContainer" parent="scene_container/Vbox/VBoxContainer/HBoxContainer5"]
+modulate = Color(0, 0, 0, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="mobile_keyboard_container" type="MarginContainer" parent="scene_container/Vbox"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+script = ExtResource("7_f0ofe")
+
+[node name="keyboard_bg" type="ColorRect" parent="scene_container/Vbox/mobile_keyboard_container"]
+visible = false
+layout_mode = 2
+color = Color(0.106625, 0.362871, 0.49539, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="scene_container/Vbox/mobile_keyboard_container"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="scene_container/Vbox/mobile_keyboard_container/VBoxContainer"]
+layout_mode = 2
+
+[node name="key_row" parent="scene_container/Vbox/mobile_keyboard_container/VBoxContainer" instance=ExtResource("10_wlv43")]
+layout_mode = 2
+keys_file = "res://assets/keyboard_key_files/1.json"
+
+[node name="key_row2" parent="scene_container/Vbox/mobile_keyboard_container/VBoxContainer" instance=ExtResource("10_wlv43")]
+layout_mode = 2
+keys_file = "res://assets/keyboard_key_files/2.json"
+
+[node name="key_row3" parent="scene_container/Vbox/mobile_keyboard_container/VBoxContainer" instance=ExtResource("10_wlv43")]
+layout_mode = 2
+keys_file = "res://assets/keyboard_key_files/3.json"
+
+[node name="key_row5" parent="scene_container/Vbox/mobile_keyboard_container/VBoxContainer" instance=ExtResource("10_wlv43")]
+layout_mode = 2
+localize_numeral_system = false
+keys_file = "res://assets/keyboard_key_files/5.json"
+
+[node name="key_row4" parent="scene_container/Vbox/mobile_keyboard_container/VBoxContainer" instance=ExtResource("10_wlv43")]
+layout_mode = 2
+keys_file = "res://assets/keyboard_key_files/4.json"
+
+[node name="MarginContainer" type="MarginContainer" parent="scene_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="download_progress" type="ProgressBar" parent="scene_container/MarginContainer"]
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 2
+indeterminate = true
+editor_preview_indeterminate = false
+script = ExtResource("18_qbmvy")
+
+[node name="BuildNum" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Version: 0.0.12"
+horizontal_alignment = 1
+
+[node name="active_word_group_countdown_container" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_o3lr4")
+
+[node name="ColorRect" type="ColorRect" parent="active_word_group_countdown_container"]
+layout_mode = 2
+color = Color(0.0489826, 0.24325, 0.216167, 1)
+
+[node name="Control" type="Control" parent="active_word_group_countdown_container"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="active_word_group_countdown_container/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 127.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="active_word_group_countdown_container/Control/MarginContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("14_3mihp")
+theme_override_font_sizes/font_size = 40
+text = "Clique em iniciar para escutar a primeira palavra do grupo."
+autowrap_mode = 2
+
+[node name="count_down_progress" type="ProgressBar" parent="active_word_group_countdown_container/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 4.0
+step = 1.0
+page = 1.0
+value = 3.0
+show_percentage = false
+script = ExtResource("4_r7wqo")
+
+[node name="close_count_down_container_button" parent="active_word_group_countdown_container/Control" instance=ExtResource("16_3mihp")]
+layout_mode = 1
+offset_left = -96.0
+offset_top = -27.5
+offset_right = 96.0
+offset_bottom = 27.5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -159.0
+offset_top = 20.0
+offset_right = 159.0
+offset_bottom = 103.0
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="PanelContainer" type="MarginContainer" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/PanelContainer"]
+layout_mode = 2
+
+[node name="label_1" type="Label" parent="HBoxContainer2/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 70
+text = "Word "
+horizontal_alignment = 2
+
+[node name="active_word_index_label" type="Label" parent="HBoxContainer2/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 70
+text = "1"
+horizontal_alignment = 1
+script = ExtResource("3_3mihp")
+
+[node name="label_2" type="Label" parent="HBoxContainer2/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 70
+text = "of "
+horizontal_alignment = 1
+
+[node name="total_words" type="Label" parent="HBoxContainer2/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 70
+text = "1"
+horizontal_alignment = 1
+script = ExtResource("3_06alm")
+
+[node name="label_3" type="Label" parent="HBoxContainer2/PanelContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 20
+text = " ("
+horizontal_alignment = 2
+
+[node name="total_acertos" type="Label" parent="HBoxContainer2/PanelContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 20
+text = "0"
+script = ExtResource("3_wlv43")
+
+[node name="label_4" type="Label" parent="HBoxContainer2/PanelContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 20
+text = " acertos)"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 116.0
+grow_horizontal = 2
+scale = Vector2(0.7, 0.7)
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="dismiss_open_word_group" parent="HBoxContainer/MarginContainer" instance=ExtResource("1_lkj8y")]
+layout_mode = 2
+text = ""
+icon = ExtResource("3_ilyfu")
+flat = true
+
+[node name="PanelContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainerlogo" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.5
+offset_right = 81.5
+offset_bottom = 100.0
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="PanelContainer2" type="MarginContainer" parent="HBoxContainerlogo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainerlogo"]
+layout_mode = 2
+
+[node name="PanelContainer" type="MarginContainer" parent="HBoxContainerlogo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="success_msg_container" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_vlh3g")
+
+[node name="ColorRect" type="ColorRect" parent="success_msg_container"]
+layout_mode = 2
+color = Color(0.583652, 0.988114, 0.53074, 1)
+
+[node name="fail_msg_container" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_t6qyx")
+
+[node name="ColorRect" type="ColorRect" parent="fail_msg_container"]
+layout_mode = 2
+color = Color(0.0588235, 0.298039, 0.380392, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="fail_msg_container"]
+layout_mode = 2
+
+[node name="MarginContainer5" type="MarginContainer" parent="fail_msg_container/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="container_icone_fail" type="MarginContainer" parent="fail_msg_container/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="fail_msg_container/VBoxContainer/container_icone_fail"]
+modulate = Color(0.999685, 0.0435155, 0.0240946, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("22_3rjam")
+
+[node name="errado_container" type="MarginContainer" parent="fail_msg_container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 50
+
+[node name="errado_label" type="Label" parent="fail_msg_container/VBoxContainer/errado_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 60
+text = "Você digitou:"
+
+[node name="errado_container_value" type="MarginContainer" parent="fail_msg_container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 40
+
+[node name="errado_value" type="Label" parent="fail_msg_container/VBoxContainer/errado_container_value"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 70
+
+[node name="correto_container_label" type="MarginContainer" parent="fail_msg_container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 50
+
+[node name="correta_label" type="Label" parent="fail_msg_container/VBoxContainer/correto_container_label"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 70
+text = "O correto é:"
+
+[node name="correto_container_value" type="MarginContainer" parent="fail_msg_container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 50
+
+[node name="correta_value" type="Label" parent="fail_msg_container/VBoxContainer/correto_container_value"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 70
+
+[node name="MarginContainer" type="MarginContainer" parent="fail_msg_container/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="next_action_button_container" type="MarginContainer" parent="fail_msg_container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="action_button" type="Button" parent="fail_msg_container/VBoxContainer/next_action_button_container"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 70
+text = "Próximo desafio"
+icon = ExtResource("22_1avc7")
+flat = true
+icon_alignment = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="fail_msg_container/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="finished_msg_container" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("20_0ofm4")
+acerto_label = ExtResource("22_ilyfu")
+
+[node name="ColorRect" type="ColorRect" parent="finished_msg_container"]
+layout_mode = 2
+color = Color(0.0941176, 0.47451, 0.6, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="finished_msg_container"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="finished_msg_container/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Label" type="Label" parent="finished_msg_container/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 80
+text = "Resultado"
+horizontal_alignment = 1
+
+[node name="total_acertos_container" type="HBoxContainer" parent="finished_msg_container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="total_acertos_label" type="Label" parent="finished_msg_container/VBoxContainer/total_acertos_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 70
+text = "Total de  acertos: "
+horizontal_alignment = 1
+
+[node name="total_acertos_value" type="Label" parent="finished_msg_container/VBoxContainer/total_acertos_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 70
+text = "0"
+
+[node name="total_words_container" type="HBoxContainer" parent="finished_msg_container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="total_words_label" type="Label" parent="finished_msg_container/VBoxContainer/total_words_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 70
+text = "Total de  desafios: "
+horizontal_alignment = 1
+
+[node name="total_words_value" type="Label" parent="finished_msg_container/VBoxContainer/total_words_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0qbua")
+theme_override_font_sizes/font_size = 70
+text = "0"
+
+[node name="word_list_scroller" type="ScrollContainer" parent="finished_msg_container/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="word_list_container" type="VBoxContainer" parent="finished_msg_container/VBoxContainer/word_list_scroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="finished_msg_container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="dismiss_open_word_group" parent="finished_msg_container/VBoxContainer/MarginContainer2" instance=ExtResource("1_lkj8y")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+flat = true
+
+[connection signal="pressed" from="fail_msg_container/VBoxContainer/next_action_button_container/action_button" to="fail_msg_container" method="_on_after_click"]

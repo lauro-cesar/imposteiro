@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxwpy26ail15i"]
+
+[ext_resource type="Script" uid="uid://c6esb5smmqq4e" path="res://scenes/game_loop/list_word_groups_scene/remote_image_container.gd" id="1_ma7lk"]
+
+[node name="remote_image_container" type="TextureRect"]
+script = ExtResource("1_ma7lk")

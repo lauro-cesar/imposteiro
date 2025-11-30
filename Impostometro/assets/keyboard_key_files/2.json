@@ -1,0 +1,70 @@
+[
+		{ 
+		"key_name": "SPACER", 
+		"key_value":"SPACER",
+		"key_size":3.0,
+		"key_type":"spacer"
+	},
+	{ 
+		"key_name": "A", 
+		"key_value":"A",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "S", 
+		"key_value":"S",
+		"key_size":1.0,
+		"key_type":"key"
+	},	
+	{ 
+		"key_name": "D", 
+		"key_value":"D",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "F", 
+		"key_value":"F",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "G", 
+		"key_value":"G",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "H", 
+		"key_value":"H",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "J", 
+		"key_value":"J",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "K", 
+		"key_value":"K",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "L", 
+		"key_value":"L",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "BACKSPACE", 
+		"key_value":"BACKSPACE",
+		"key_size":2.0,
+		"key_event_name":"delete_last_key",
+		"key_type":"key",	
+	}	
+	
+]

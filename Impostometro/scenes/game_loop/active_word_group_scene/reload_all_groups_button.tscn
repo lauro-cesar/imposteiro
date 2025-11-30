@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://reu75tuf3euh"]
+
+[ext_resource type="FontFile" uid="uid://ch8sb8anxeqym" path="res://assets/fonts/Kenney Future Narrow.ttf" id="1_7ettk"]
+[ext_resource type="Script" uid="uid://fm8omsttjpga" path="res://scenes/onboarding/reload_all_groups_button.gd" id="2_1rnua"]
+
+[node name="reload_all_groups_button" type="Button"]
+theme_override_fonts/font = ExtResource("1_7ettk")
+theme_override_font_sizes/font_size = 30
+text = "Reload all words"
+script = ExtResource("2_1rnua")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2hoe120ucgg"]
+
+[ext_resource type="FontFile" uid="uid://cu4awhdtuyj5y" path="res://assets/fonts/OpenType (.otf)/Kaph-Regular.otf" id="1_mno7s"]
+[ext_resource type="Script" uid="uid://bdfqritjla15g" path="res://scenes/game_loop/active_word_group_scene/play_active_word_button.gd" id="2_efcl2"]
+[ext_resource type="Texture2D" uid="uid://bgfh7xfxnngl3" path="res://assets/Basic_GUI_Bundle/Icons/SVG/Icon_Large_Audio_Blank.svg" id="2_vwf5h"]
+
+[node name="play_active_word_button" type="Button"]
+custom_minimum_size = Vector2(96, 96)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_mno7s")
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("2_vwf5h")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_efcl2")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

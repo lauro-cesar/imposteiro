@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://divem258d7250"]
+
+[ext_resource type="FontFile" uid="uid://884ojyxh5s8h" path="res://assets/fonts/Roboto/static/Roboto_Condensed-ExtraBold.ttf" id="1_q0pq3"]
+[ext_resource type="Script" uid="uid://dnafpksubdpkk" path="res://scenes/game_loop/list_word_groups_scene/card_open_group/button_open_group.gd" id="2_tnr47"]
+
+[node name="button_open_group" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_q0pq3")
+theme_override_font_sizes/font_size = 50
+text = "Grupo"
+flat = true
+alignment = 0
+script = ExtResource("2_tnr47")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

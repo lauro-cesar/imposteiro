@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cku0lpltbbbl0"]
+
+[ext_resource type="Script" uid="uid://dy313heco3m7m" path="res://scenes/experiments/letter_spammer.gd" id="2_14y8a"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qo4lb"]
+friction = 0.05
+rough = true
+
+[node name="Pipe" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(20, 60)
+physics_material_override = SubResource("PhysicsMaterial_qo4lb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-31, -290, 13, -273, 24, 246, 34, 288, 44, 321, 61, 340, 87, 357, 121, 364, 176, 370, 231, 368, 288, 354, 357, 351, 442, 352, 521, 368, 609, 379, 693, 377, 761, 377, 823, 385, 1024, 433, 1078, 215, 1138, 255, 1109, 517, -3, 420)
+
+[node name="letter_spammer" type="Node2D" parent="."]
+position = Vector2(74, -193)
+script = ExtResource("2_14y8a")

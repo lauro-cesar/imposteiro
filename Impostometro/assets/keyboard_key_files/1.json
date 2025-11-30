@@ -1,0 +1,84 @@
+[
+			{ 
+		"key_name": "SPACER", 
+		"key_value":"SPACER",
+		"key_size":2.0,
+		"key_type":"dummy"
+	},
+		
+	{ 
+		"key_name": "Q", 
+		"key_value":"Q",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "W", 
+		"key_value":"W",
+		"key_size":1.0,
+		"key_type":"key"
+	},	
+	{ 
+		"key_name": "E", 
+		"key_value":"E",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "R", 
+		"key_value":"R",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "T", 
+		"key_value":"T",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "Y", 
+		"key_value":"Y",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "U", 
+		"key_value":"U",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "I", 
+		"key_value":"I",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "O", 
+		"key_value":"O",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "P", 
+		"key_value":"P",
+		"key_size":1.0,
+		"key_type":"key"
+	},
+	{ 
+		"key_name": "DELETE", 
+		"key_value":"DELETE",
+		"key_size":2.0,
+		"key_event_name":"delete_all",
+		"key_type":"key",
+		"key_icon_path":"res://assets/letter_svg/delete_white.svg",
+	},
+			{ 
+		"key_name": "SPACER", 
+		"key_value":"SPACER",
+		"key_size":2.0,
+		"key_type":"spacer"
+	}
+		
+]

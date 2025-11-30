@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbbw8arv2de2u"]
+
+[ext_resource type="PackedScene" uid="uid://c5u868vg77bwf" path="res://scenes/game_loop/stereo_speaker/stereo_speaker.tscn" id="1_5kipe"]
+[ext_resource type="Script" uid="uid://sebc3gmcja3r" path="res://scenes/experiments/resizable_main_scene.gd" id="1_bh4jr"]
+[ext_resource type="Script" uid="uid://bgpn7b2svln8a" path="res://addons/onscreenkeyboard/onscreen_keyboard.gd" id="2_wsrcf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bh4jr"]
+bg_color = Color(0.976478, 0.320429, 0.570821, 1)
+corner_detail = 11
+
+[sub_resource type="FontFile" id="FontFile_bh4jr"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+
+[node name="ResizableMainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bh4jr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StereoSpeaker" parent="MarginContainer" instance=ExtResource("1_5kipe")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OnscreenKeyboard" type="PanelContainer" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bh4jr")
+script = ExtResource("2_wsrcf")
+animate = false
+set_tool_tip = false
+background = SubResource("StyleBoxFlat_bh4jr")
+font = SubResource("FontFile_bh4jr")
+font_size = 40
+metadata/_custom_type_script = "uid://bgpn7b2svln8a"
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

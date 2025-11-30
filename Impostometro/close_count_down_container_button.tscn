@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://buqr7kqp1clv4"]
+
+[ext_resource type="FontFile" uid="uid://cu4awhdtuyj5y" path="res://assets/fonts/OpenType (.otf)/Kaph-Regular.otf" id="1_03yv5"]
+[ext_resource type="Script" uid="uid://cvco4agi6cuis" path="res://scenes/game_loop/active_word_group_scene/close_count_down_container_button.gd" id="2_pjei7"]
+
+[node name="close_count_down_container_button" type="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -15.5
+offset_right = 47.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_03yv5")
+theme_override_font_sizes/font_size = 40
+text = "Iniciar"
+script = ExtResource("2_pjei7")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

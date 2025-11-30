@@ -1,0 +1,22 @@
+[
+		{ 
+		"key_name": "SPACER", 
+		"key_value":"SPACER",
+		"key_size":3.0,
+		"key_type":"dummy"
+	},
+	{ 
+		"key_name": "SPACE_LG", 
+		"key_value":"SPACE_LG",
+		"key_size":8.0,
+		"key_event_name":"append_space",
+		"key_type":"key"
+	},
+		{ 
+		"key_name": "SPACER", 
+		"key_value":"SPACER",
+		"key_size":3.0,
+		"key_type":"dummy"
+	}
+		
+]

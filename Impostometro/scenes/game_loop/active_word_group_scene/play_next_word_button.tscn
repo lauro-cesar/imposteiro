@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://imtvbco0f4sq"]
+
+[ext_resource type="FontFile" uid="uid://cu4awhdtuyj5y" path="res://assets/fonts/OpenType (.otf)/Kaph-Regular.otf" id="1_xmvwe"]
+[ext_resource type="Texture2D" uid="uid://f72m1x17kxvc" path="res://assets/icons_128/fast_forward.png" id="2_8qbd0"]
+[ext_resource type="Script" uid="uid://dp2jlngmgo4q" path="res://scenes/game_loop/active_word_group_scene/play_next_word_button.gd" id="2_idqy4"]
+
+[node name="play_next_word_button" type="Button"]
+custom_minimum_size = Vector2(96, 96)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -48.0
+offset_right = 9.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_xmvwe")
+theme_override_font_sizes/font_size = 30
+icon = ExtResource("2_8qbd0")
+flat = true
+alignment = 2
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_idqy4")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

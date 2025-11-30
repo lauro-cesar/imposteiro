@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://oxx01dvlowhx"]
+
+[ext_resource type="Texture2D" uid="uid://d0m1iuaspr0we" path="res://assets/Basic_GUI_Bundle/BoxesBanners/Box_Blank_Rounded.png" id="1_nepph"]
+
+[node name="BgNine" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 76.0
+offset_right = -34.0
+offset_bottom = -435.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 113.0
+offset_top = 254.0
+offset_right = -219.0
+offset_bottom = -344.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nepph")
+region_rect = Rect2(0, 0, 1510, 1510)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2

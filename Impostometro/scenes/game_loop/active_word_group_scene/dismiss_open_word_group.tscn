@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm1tyjg47c8sj"]
+
+[ext_resource type="Script" uid="uid://bjxntbxrgfhyu" path="res://scenes/onboarding/dismiss_open_word_group.gd" id="1_lhrsy"]
+[ext_resource type="FontFile" uid="uid://cu4awhdtuyj5y" path="res://assets/fonts/OpenType (.otf)/Kaph-Regular.otf" id="1_wtev4"]
+[ext_resource type="Texture2D" uid="uid://cydlnh7idd35c" path="res://assets/Basic_GUI_Bundle/Icons/SVG/Icon_Large_Menu_Blank.svg" id="2_428w8"]
+
+[node name="dismiss_open_word_group" type="Button"]
+custom_minimum_size = Vector2(96, 96)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -382.5
+offset_top = -74.0
+offset_right = 382.5
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 1
+theme_override_fonts/font = ExtResource("1_wtev4")
+theme_override_font_sizes/font_size = 50
+text = "Voltar"
+icon = ExtResource("2_428w8")
+expand_icon = true
+script = ExtResource("1_lhrsy")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
